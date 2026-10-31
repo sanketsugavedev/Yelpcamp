@@ -1,0 +1,236 @@
+<!-- <% layout('layout/boilerplate') %>
+<div style="width: 100%; height: 500px;" id="map" class="map">
+
+</div>
+    <h1>All Campgrounds</h1>
+    <a href="/campgrounds/new">Add Campground</a>
+
+    <% for(let campground of campgrounds){ %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <% if(campground.images.length){ %>
+                    <img class="img-fluid" src="<%= campground.images[0].url %>" alt="">
+                    <% }else{ %>
+                        <img src="https://res.cloudinary.com/kjcxoa9y/image/upload/v1793429783/YelpCamp/rzscswqklixzbeif44t5.png" class="img-fluid" alt="">
+                        <% } %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= campground.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= campground.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= campground.location %>
+                            </small>
+                        </p>
+                        <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">View <%= campground.title %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <% } %>
+<script>
+    const mapToken = '<%= process.env.MAPBOX_TOKEN%>';
+    const campgrounds = {features: <%- JSON.stringify(campgrounds) %>};
+</script>
+        <script src="/javascripts/clusterMap.js"></script> -->
+
+
+<% layout('layout/boilerplate') %>
+
+<div class="container py-4">
+
+    <!-- PAGE HEADER -->
+    <div class="row align-items-center mb-4">
+
+        <div class="col-md-8">
+            <h1 class="font-weight-bold mb-2">
+                Explore Campgrounds
+            </h1>
+
+            <p class="text-muted mb-0">
+                Discover beautiful places, explore nature and find your next adventure.
+            </p>
+        </div>
+
+        <div class="col-md-4 text-md-right mt-3 mt-md-0">
+            <a href="/campgrounds/new" class="btn btn-warning font-weight-bold">
+                <i class="fas fa-plus mr-2"></i>
+                Add Campground
+            </a>
+        </div>
+
+    </div>
+
+
+    <!-- MAP SECTION -->
+    <div class="card border-0 shadow-sm mb-5">
+
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0">
+                <i class="fas fa-map-marked-alt mr-2"></i>
+                Discover Campgrounds on Map
+            </h5>
+        </div>
+
+        <div class="card-body p-0">
+            <div id="map" class="map" style="width: 100%; height: 450px;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- CAMPGROUND LIST HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="font-weight-bold mb-1">
+                All Campgrounds
+            </h2>
+
+            <p class="text-muted mb-0">
+                Find the perfect place for your next escape.
+            </p>
+        </div>
+
+        <span class="badge badge-success badge-pill p-2">
+            <%= campgrounds.length %> Places
+        </span>
+
+    </div>
+
+
+    <!-- CAMPGROUND CARDS -->
+    <% if (campgrounds.length > 0) { %>
+
+        <div class="row">
+
+            <% for (let campground of campgrounds) { %>
+
+                <div class="col-lg-6 mb-4">
+
+                    <div class="card h-100 border-0 shadow-sm">
+
+                        <div class="row no-gutters h-100">
+
+                            <!-- IMAGE -->
+                            <div class="col-md-5">
+
+                                <% if (campground.images && campground.images.length) { %>
+
+                                    <img
+                                        src="<%= campground.images[0].url %>"
+                                        class="img-fluid h-100 w-100"
+                                        alt="<%= campground.title %>"
+                                        style="object-fit: cover; min-height: 240px;">
+
+                                <% } else { %>
+
+                                    <img
+                                        src="https://res.cloudinary.com/kjcxoa9y/image/upload/v1793429783/YelpCamp/rzscswqklixzbeif44t5.png"
+                                        class="img-fluid h-100 w-100"
+                                        alt="Campground"
+                                        style="object-fit: cover; min-height: 240px;">
+
+                                <% } %>
+
+                            </div>
+
+
+                            <!-- CONTENT -->
+                            <div class="col-md-7">
+
+                                <div class="card-body d-flex flex-column h-100">
+
+                                    <h5 class="card-title font-weight-bold">
+                                        <%= campground.title %>
+                                    </h5>
+
+                                    <p class="text-muted small mb-2">
+                                        <i class="fas fa-map-marker-alt text-danger mr-1"></i>
+                                        <%= campground.location %>
+                                    </p>
+
+                                    <p class="card-text text-muted">
+                                        <%= campground.description.length > 110
+                                            ? campground.description.substring(0, 110) + '...'
+                                            : campground.description %>
+                                    </p>
+
+                                    <div class="mt-auto">
+
+                                        <h5 class="font-weight-bold text-success">
+                                            $<%= campground.price %>
+                                            <small class="text-muted font-weight-normal">
+                                                / night
+                                            </small>
+                                        </h5>
+
+                                        <a
+                                            href="/campgrounds/<%= campground._id %>"
+                                            class="btn btn-outline-success btn-block mt-2">
+
+                                            View Campground
+                                            <i class="fas fa-arrow-right ml-2"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    <% } else { %>
+
+        <!-- EMPTY STATE -->
+        <div class="text-center py-5">
+
+            <i class="fas fa-campground fa-4x text-muted mb-4"></i>
+
+            <h3 class="font-weight-bold">
+                No Campgrounds Yet
+            </h3>
+
+            <p class="text-muted">
+                Be the first to share an amazing camping destination!
+            </p>
+
+            <a href="/campgrounds/new" class="btn btn-warning mt-2">
+                Add Your First Campground
+            </a>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+
+<!-- MAPBOX DATA -->
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const campgrounds = {
+        features: <%- JSON.stringify(campgrounds) %>
+    };
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>
+

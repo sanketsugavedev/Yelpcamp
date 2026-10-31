@@ -1,0 +1,203 @@
+<!-- <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Yelpcamp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="/campgrounds">campgrounds</a>
+                <a class="nav-link" href="/campgrounds/new">New campgrounds</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <% if(!currentUser){%>
+                    <a href="/login" class="nav-link">Login</a>
+                    <a href="/register" class="nav-link">Register</a>
+                    <% }else{ %>
+                        <a href="/logout" class="nav-link">Logout</a>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+<style>
+    .yc-navbar {
+        background-color: #182c24;
+        padding: 12px 0;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .yc-brand {
+        color: #ffffff !important;
+        font-size: 1.65rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .yc-brand span {
+        color: #f4a261;
+    }
+
+    .yc-navbar .nav-link {
+        color: #d5dfd8 !important;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 10px 16px !important;
+        transition: color 0.2s ease;
+    }
+
+    .yc-navbar .nav-link:hover,
+    .yc-navbar .nav-link.active {
+        color: #f4a261 !important;
+    }
+
+    .yc-navbar .navbar-toggler {
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 6px 10px;
+    }
+
+    .yc-navbar .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .yc-toggler-icon {
+        display: inline-block;
+        width: 25px;
+        height: 2px;
+        background: #ffffff;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    .yc-toggler-icon::before,
+    .yc-toggler-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 25px;
+        height: 2px;
+        background: #ffffff;
+    }
+
+    .yc-toggler-icon::before {
+        top: -8px;
+    }
+
+    .yc-toggler-icon::after {
+        top: 8px;
+    }
+
+    .yc-auth-btn {
+        border: 1px solid #f4a261;
+        color: #f4a261 !important;
+        border-radius: 6px;
+        margin-left: 8px;
+        padding: 8px 18px !important;
+        transition: all 0.2s ease;
+    }
+
+    .yc-auth-btn:hover {
+        background: #f4a261;
+        color: #182c24 !important;
+    }
+
+    .yc-register-btn {
+        background: #f4a261;
+        color: #182c24 !important;
+        border-radius: 6px;
+        margin-left: 8px;
+        padding: 8px 18px !important;
+        font-weight: 600 !important;
+        transition: all 0.2s ease;
+    }
+
+    .yc-register-btn:hover {
+        background: #e88b42;
+        color: #182c24 !important;
+    }
+
+    @media (max-width: 991px) {
+        .yc-navbar .navbar-nav {
+            padding-top: 10px;
+        }
+
+        .yc-auth-btn,
+        .yc-register-btn {
+            display: inline-block;
+            margin: 5px 0;
+            text-align: center;
+            width: fit-content;
+        }
+    }
+</style>
+
+<nav class="navbar sticky-top navbar-expand-lg yc-navbar">
+
+    <div class="container">
+
+        <!-- BRAND -->
+        <a class="navbar-brand yc-brand" href="/">
+            <span>Y</span>elpCamp<span>.</span>
+        </a>
+
+        <!-- MOBILE TOGGLER -->
+        <button class="navbar-toggler" type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="yc-toggler-icon"></span>
+        </button>
+
+        <!-- NAVIGATION -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <div class="navbar-nav ml-lg-4">
+
+                <a class="nav-link" href="/">
+                    Home
+                </a>
+
+                <a class="nav-link" href="/campgrounds">
+                    Explore Campgrounds
+                </a>
+
+                <a class="nav-link" href="/campgrounds/new">
+                    Add Campground
+                </a>
+
+            </div>
+
+            <!-- AUTHENTICATION -->
+            <div class="navbar-nav ml-auto">
+
+                <% if (!currentUser) { %>
+
+                    <a href="/login" class="nav-link yc-auth-btn">
+                        Login
+                    </a>
+
+                    <a href="/register" class="nav-link yc-register-btn">
+                        Get Started
+                    </a>
+
+                <% } else { %>
+
+                    <a href="/logout" class="nav-link yc-auth-btn">
+                        Logout
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>

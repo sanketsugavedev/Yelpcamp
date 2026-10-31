@@ -1,0 +1,105 @@
+<!-- <% layout('layout/boilerplate') %>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="alert theme-danger" role="alert">
+                <vstack>
+                    <h4 class="alert-heading mb-2">
+                        <%= err.message %>
+                    </h4>
+                    <p>
+                        <!-- for development we use stack -->
+                        <!-- <%= err.stack %>
+                    </p>
+                </vstack>
+            </div>
+        </div>
+    </div> --> 
+
+<% layout('layout/boilerplate') %>
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10">
+
+            <!-- ERROR CARD -->
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-header bg-danger text-white py-3">
+
+                    <h5 class="mb-0 font-weight-bold">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        Something Went Wrong!
+                    </h5>
+
+                </div>
+
+
+                <div class="card-body p-4">
+
+                    <!-- ERROR MESSAGE -->
+                    <h4 class="font-weight-bold text-danger mb-3">
+                        <%= err.message %>
+                    </h4>
+
+                    <p class="text-muted">
+                        We encountered an error while processing your request.
+                    </p>
+
+
+                    <!-- STACK TRACE -->
+                    <% if (err.stack) { %>
+
+                        <div class="mt-4">
+
+                            <h6 class="font-weight-bold">
+                                <i class="fas fa-code mr-2"></i>
+                                Error Details
+                            </h6>
+
+                            <div class="bg-light border rounded p-3">
+
+                                <pre class="mb-0 text-muted"
+                                    style="white-space: pre-wrap; word-break: break-word; font-size: 12px;"><%= err.stack %></pre>
+
+                            </div>
+
+                        </div>
+
+                    <% } %>
+
+
+                    <!-- BACK BUTTON -->
+                    <div class="mt-4">
+
+                        <a href="/campgrounds"
+                            class="btn btn-warning font-weight-bold">
+
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Back to Campgrounds
+
+                        </a>
+
+                        <a href="/"
+                            class="btn btn-outline-secondary ml-2">
+
+                            Home
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="text-center text-muted small mt-4">
+                YelpCamp &mdash; Every adventure has a story.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,161 @@
+<!-- <% layout('layout/boilerplate') %>
+
+    <h1>Login</h1>
+
+    <form action="/login" method="post" class="validated-form" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form> -->
+
+
+<% layout('layout/boilerplate') %>
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 col-lg-5">
+
+            <!-- HEADER -->
+            <div class="text-center mb-4">
+
+                <h1 class="font-weight-bold">
+                    Welcome Back!
+                </h1>
+
+                <p class="text-muted">
+                    Login to continue exploring amazing campgrounds.
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN CARD -->
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-header bg-dark text-white text-center py-3">
+
+                    <h5 class="mb-0 font-weight-bold">
+                        Login to YelpCamp
+                    </h5>
+
+                </div>
+
+
+                <div class="card-body p-4">
+
+                    <form
+                        action="/login"
+                        method="POST"
+                        class="validated-form"
+                        novalidate>
+
+
+                        <!-- USERNAME -->
+                        <div class="form-group">
+
+                            <label for="username" class="font-weight-bold">
+                                Username
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="username"
+                                id="username"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                                required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter your username.
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="form-group">
+
+                            <label for="password" class="font-weight-bold">
+                                Password
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter your password.
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+                        <button
+                            type="submit"
+                            class="btn btn-warning btn-lg btn-block font-weight-bold mt-4">
+
+                            Login to Your Account
+
+                        </button>
+
+                    </form>
+
+
+                    <hr class="my-4">
+
+
+                    <!-- REGISTER LINK -->
+                    <p class="text-center text-muted mb-0">
+
+                        Don't have an account?
+
+                        <a href="/register" class="font-weight-bold text-success">
+                            Create Account
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTNOTE -->
+            <p class="text-center text-muted small mt-4">
+                Your next outdoor adventure is waiting for you.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

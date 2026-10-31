@@ -1,0 +1,284 @@
+<!-- <% layout('layout/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">New campground</h1>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds" method="POST" enctype="multipart/form-data" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="campground[location]" id="location" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="campground[description]" id="description"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="image" multiple>
+                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success" type="submit">Add Campground</button>
+                </div>
+            </form>
+            <a href="/campgrounds">All campgrounds</a>
+        </div>
+    </div> -->
+
+
+<% layout('layout/boilerplate') %>
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+
+            <!-- PAGE HEADER -->
+            <div class="text-center mb-4">
+
+                <h1 class="font-weight-bold">
+                    Add a Campground
+                </h1>
+
+                <p class="text-muted">
+                    Share an amazing destination with fellow adventurers.
+                </p>
+
+            </div>
+
+
+            <!-- FORM CARD -->
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-dark text-white py-3">
+                    <h5 class="mb-0">
+                        Campground Information
+                    </h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form
+                        action="/campgrounds"
+                        method="POST"
+                        enctype="multipart/form-data"
+                        novalidate
+                        class="validated-form">
+
+
+                        <!-- TITLE -->
+                        <div class="form-group">
+
+                            <label for="title" class="font-weight-bold">
+                                Campground Name
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="title"
+                                name="campground[title]"
+                                placeholder="e.g. Pine Forest Camping"
+                                required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter a campground name.
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOCATION -->
+                        <div class="form-group">
+
+                            <label for="location" class="font-weight-bold">
+                                Location
+                            </label>
+
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="campground[location]"
+                                id="location"
+                                placeholder="e.g. Lonavala, Maharashtra"
+                                required>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter a location.
+                            </div>
+
+                        </div>
+
+
+                        <!-- PRICE -->
+                        <div class="form-group">
+
+                            <label for="price" class="font-weight-bold">
+                                Campground Price
+                            </label>
+
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="price"
+                                    placeholder="0.00"
+                                    name="campground[price]"
+                                    min="0"
+                                    step="0.01"
+                                    required>
+
+                            </div>
+
+                            <small class="form-text text-muted">
+                                Enter the price per night.
+                            </small>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter a valid price.
+                            </div>
+
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+                        <div class="form-group">
+
+                            <label for="description" class="font-weight-bold">
+                                Description
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                name="campground[description]"
+                                id="description"
+                                rows="5"
+                                placeholder="Describe your campground, its surroundings and facilities..."
+                                required></textarea>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter a description.
+                            </div>
+
+                        </div>
+
+
+                        <hr class="my-4">
+
+
+                        <!-- IMAGE UPLOAD -->
+                        <h5 class="font-weight-bold mb-3">
+                            <i class="fas fa-images mr-2"></i>
+                            Campground Photos
+                        </h5>
+
+                        <div class="custom-file mb-3">
+
+                            <input
+                                type="file"
+                                class="custom-file-input"
+                                id="inputGroupFile02"
+                                name="image"
+                                accept="image/*"
+                                multiple>
+
+                            <label
+                                class="custom-file-label"
+                                for="inputGroupFile02">
+                                Choose campground images
+                            </label>
+
+                        </div>
+
+                        <small class="form-text text-muted mb-4">
+                            You can upload multiple photos to showcase your campground.
+                        </small>
+
+
+                        <hr class="my-4">
+
+
+                        <!-- BUTTONS -->
+                        <button
+                            class="btn btn-warning btn-lg btn-block font-weight-bold"
+                            type="submit">
+
+                            <i class="fas fa-plus mr-2"></i>
+                            Add Campground
+
+                        </button>
+
+                        <a
+                            href="/campgrounds"
+                            class="btn btn-outline-secondary btn-block mt-3">
+
+                            Cancel and Go Back
+
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+            <p class="text-center text-muted small mt-4">
+                YelpCamp &mdash; Make every adventure memorable.
+            </p>
+
+        </div>
+    </div>
+
+</div>
