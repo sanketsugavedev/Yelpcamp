@@ -110,6 +110,10 @@ app.use((err,req,res,next) => {
     res.status(statusCode).render('error', {err});
 });
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000');
-});
+if (require.main === module) {
+    app.listen(3000, () => {
+        console.log('Serving on port 3000');
+    });
+}
+
+module.exports = app;
